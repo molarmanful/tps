@@ -1,1 +1,38 @@
 <!DOCTYPE html>
+<html>
+  <head>
+    <title>TPS Simple Timer Demo</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script src="tps.js"></script>
+    <script>
+      $(document).ready(function(){
+        var t = new tps('.scramble', 'h1');
+        t.scramble();
+        var stop = false;
+        $(document).keyup(function(e){
+          if(e.keyCode == 32 && stop == false){
+            t.start();
+            stop = true;
+          }
+        }).keydown(function(e){
+          if(e.keyCode == 32 && stop == true){
+            t.stop();
+            stop = false;
+            t.scramble();
+          }
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="jumbotron">
+        <h1>0:0.000</h1>
+        <p class="scramble"></p>
+      </div>
+    </div>
+  </body>
+</html>
