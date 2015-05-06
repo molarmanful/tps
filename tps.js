@@ -90,10 +90,10 @@ window.tps = function(s, t){
       }
     }, 1000);
   },
-  this.start = function(s){
+  this.start = function(){
     timer_obj.start();
   },
-  this.stop = function(s){
+  this.stop = function(){
     timer_obj.end();
   },
   this.record = function(){
