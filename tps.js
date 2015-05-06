@@ -82,12 +82,13 @@ $.when(
 
 window.tps = function(s, t){
   timer_obj = new startTimer($(t));
+  me = this;
   this.scramble = function(){
-    $(scr).html(scramblers[ce].getRandomScramble().scramble_string);
+    $(s).html(scramblers[ce].getRandomScramble().scramble_string);
   },
   this.event = function(e){
     ce = e;
-    $(scr).html(scramblers[ce].getRandomScramble().scramble_string);
+    $(s).html(scramblers[ce].getRandomScramble().scramble_string);
   }
   this.inspect = function(t){
     $(ti).text(t);
@@ -107,6 +108,7 @@ window.tps = function(s, t){
   },
   this.stop = function(){
     timer_obj.end();
+    me.scramble();
   },
   this.record = function(){
     times[event.indexOf(ce)].push($(ti).text());
