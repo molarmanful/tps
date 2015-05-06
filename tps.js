@@ -100,15 +100,15 @@ window.tps = function(s, t){
     times[event.indexOf(ce)].push($(ti).text());
   },
   this.avg = function(a){
-    var slicedepth = (times[ce].length - a > 0) ? times[ce].length - a || 0,
-    dup = times[ce].slice(slicedepth);
+    var slicedepth = (times[ce].length - a > 0) ? times[ce].length - a || 0;
+    var dup = times[ce].slice(slicedepth);
     dup.splice(dup.indexOf(Math.max.apply(Math, dup)), 1).splice(dup.indexOf(Math.min.apply(Math, dup)), 1);
     var m = at(satta(dup));
     return m.minutes.toString() + ':' + m.seconds.toString() + '.' + m.milliseconds.toString();
   },
   this.mean = function(a){
-    var slicedepth = (times[ce].length - a > 0) ? times[ce].length - a || 0,
-    dup = times[ce].slice(slicedepth);
+    var slicedepth = (times[ce].length - a > 0) ? times[ce].length - a || 0;
+    var dup = times[ce].slice(slicedepth);
     var m = at(satta(dup));
     return m.minutes.toString() + ':' + m.seconds.toString() + '.' + m.milliseconds.toString();
   },
