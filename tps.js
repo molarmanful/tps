@@ -8,17 +8,6 @@ return new Za.prototype.init(a,b,c,d,e)}m.Tween=Za,Za.prototype={constructor:Za,
 
 var startTimer=function(t){this.start_t=null,this.interval=null,this.DOM=t,this.toggle=function(){null==this.interval?this.start():this.end()},this.start=function(){this.start_t=new Date;var t=this,i=function(){t.update()};this.interval=setInterval(i,10)},this.end=function(){clearInterval(this.interval),this.interval=null},this.update=function(){var t=(new Date-this.start_t)/1e3,i=60>t?0:Math.floor(Math.floor(t)/60);t=(t%60).toFixed(3),this.DOM.html()=i.toString()+":"+t}};
 
-$.getScript('https://rawgit.com/cubing/jsss/master/scramble_222.js');
-$.getScript('https://rawgit.com/cubing/jsss/master/scramble_333.js');
-$.getScript('https://rawgit.com/cubing/jsss/master/scramble_NNN.js');
-$.getScript('https://rawgit.com/cubing/jsss/master/scramble_minx.js');
-$.getScript('https://rawgit.com/cubing/jsss/master/scramble_pyram.js');
-$.getScript('https://rawgit.com/cubing/jsss/master/scramble_sq1.js');
-$.getScript('https://rawgit.com/cubing/jsss/master/scramble_clock.js');
-$.getScript('https://molarmanful.github.io/minimalistimer/skewb.js');
-$.each(event, function(i, v){
-  scramblers[v].initialize(null, Math);
-});
 var stt = function(time_str) {
   var pieces = time_str.split(/:|\./g);
   return {
@@ -72,6 +61,24 @@ event = ['222', '333', '333oh', '333bf', '333ft', '444', '444bf', '555', '555bf'
 ce = '333',
 dup,
 slicedepth = 0;
+
+$.when(
+    $.getScript('https://rawgit.com/cubing/jsss/master/scramble_222.js'),
+    $.getScript('https://rawgit.com/cubing/jsss/master/scramble_333.js'),
+    $.getScript('https://rawgit.com/cubing/jsss/master/scramble_NNN.js'),
+    $.getScript('https://rawgit.com/cubing/jsss/master/scramble_minx.js'),
+    $.getScript('https://rawgit.com/cubing/jsss/master/scramble_pyram.js'),
+    $.getScript('https://rawgit.com/cubing/jsss/master/scramble_sq1.js'),
+    $.getScript('https://rawgit.com/cubing/jsss/master/scramble_clock.js'),
+    $.getScript('https://molarmanful.github.io/minimalistimer/skewb.js'),
+    $.Deferred(function( deferred ){
+        $( deferred.resolve );
+    })
+).done(function(){
+  $.each(event, function(i, v){
+    scramblers[v].initialize(null, Math);
+  });
+});
 
 window.tps = function(s, t){
   timer_obj = new startTimer($(t));
