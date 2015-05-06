@@ -62,19 +62,25 @@ ce = '333',
 dup,
 slicedepth = 0;
 
-$.when(
-    $.getScript('https://rawgit.com/cubing/jsss/master/scramble_222.js'),
-    $.getScript('https://rawgit.com/cubing/jsss/master/scramble_333.js'),
-    $.getScript('https://rawgit.com/cubing/jsss/master/scramble_NNN.js'),
-    $.getScript('https://rawgit.com/cubing/jsss/master/scramble_minx.js'),
-    $.getScript('https://rawgit.com/cubing/jsss/master/scramble_pyram.js'),
-    $.getScript('https://rawgit.com/cubing/jsss/master/scramble_sq1.js'),
-    $.getScript('https://rawgit.com/cubing/jsss/master/scramble_clock.js'),
-    $.getScript('https://molarmanful.github.io/minimalistimer/skewb.js'),
-    $.Deferred(function( deferred ){
-        $( deferred.resolve );
-    })
-).done(function(){
+(function( $ ) {
+	var getScript = $.getScript;
+	$.getScript = function( resources, callback ) {
+		var length = resources.length, 
+		handler = function() { counter++; },
+		deferreds = [],
+		counter = 0, 
+		idx = 0;
+		for ( ; idx < length; idx++ ) {
+			deferreds.push(
+				getScript( resources[ idx ], handler )
+			);
+		}
+		jQuery.when.apply( null, deferreds ).then(function() {
+			callback && callback();
+		});
+	};
+})( jQuery );
+$.getScript(['https://rawgit.com/cubing/jsss/master/scramble_222.js', 'https://rawgit.com/cubing/jsss/master/scramble_333.js', 'https://rawgit.com/cubing/jsss/master/scramble_NNN.js', 'https://rawgit.com/cubing/jsss/master/scramble_minx.js', 'https://rawgit.com/cubing/jsss/master/scramble_pyram.js', 'https://rawgit.com/cubing/jsss/master/scramble_sq1.js', 'https://rawgit.com/cubing/jsss/master/scramble_clock.js', 'https://molarmanful.github.io/minimalistimer/skewb.js'], function(){
   $.each(event, function(i, v){
     scramblers[v].initialize(null, Math);
   });
