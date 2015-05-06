@@ -80,13 +80,13 @@ slicedepth = 0;
 		});
 	};
 })( jQuery );
-$.getScript(['https://rawgit.com/cubing/jsss/master/scramble_222.js', 'https://rawgit.com/cubing/jsss/master/scramble_333.js', 'https://rawgit.com/cubing/jsss/master/scramble_NNN.js', 'https://rawgit.com/cubing/jsss/master/scramble_minx.js', 'https://rawgit.com/cubing/jsss/master/scramble_pyram.js', 'https://rawgit.com/cubing/jsss/master/scramble_sq1.js', 'https://rawgit.com/cubing/jsss/master/scramble_clock.js', 'https://molarmanful.github.io/minimalistimer/skewb.js'], function(){
-  $.each(event, function(i, v){
-    scramblers[v].initialize(null, Math);
-  });
-});
 
 window.tps = function(s, t){
+  $.getScript(['https://rawgit.com/cubing/jsss/master/scramble_222.js', 'https://rawgit.com/cubing/jsss/master/scramble_333.js', 'https://rawgit.com/cubing/jsss/master/scramble_NNN.js', 'https://rawgit.com/cubing/jsss/master/scramble_minx.js', 'https://rawgit.com/cubing/jsss/master/scramble_pyram.js', 'https://rawgit.com/cubing/jsss/master/scramble_sq1.js', 'https://rawgit.com/cubing/jsss/master/scramble_clock.js', 'https://molarmanful.github.io/minimalistimer/skewb.js'], function(){
+    $.each(event, function(i, v){
+      scramblers[v].initialize(null, Math);
+    });
+  });
   timer_obj = new startTimer($(t));
   me = this;
   this.scramble = function(){
