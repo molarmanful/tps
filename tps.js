@@ -103,15 +103,16 @@ window.tps = function(s, t){
       }
     }, 1000);
   },
+  this.record = function(){
+    times[event.indexOf(ce)].push($(ti).text());
+  },
   this.start = function(){
     timer_obj.start();
   },
   this.stop = function(){
     timer_obj.end();
     me.scramble();
-  },
-  this.record = function(){
-    times[event.indexOf(ce)].push($(ti).text());
+    me.record();
   },
   this.avg = function(amt){
     if(times[ce].length - amt > 0){
