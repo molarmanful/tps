@@ -1,2 +1,2 @@
 # TPS
-jQuery Rubik's Cube timer framework.
+Javascript Rubik's Cube timer framework. Source includes jQuery, jQuery Cookie, and Mark 2.
