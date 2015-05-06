@@ -101,18 +101,18 @@ window.tps = function(s, t){
   this.record = function(){
     times[event.indexOf(ce)].push($(ti).text());
   },
-  this.avg = function(a){
-    if(times[ce].length - a > 0){
-      slicedepth = times[ce].length - a;
+  this.avg = function(amt){
+    if(times[ce].length - amt > 0){
+      slicedepth = times[ce].length - amt;
     }
     dup = times[ce].slice(slicedepth);
     dup.splice(dup.indexOf(Math.max.apply(Math, dup)), 1).splice(dup.indexOf(Math.min.apply(Math, dup)), 1);
     var m = at(satta(dup));
     return m.minutes.toString() + ':' + m.seconds.toString() + '.' + m.milliseconds.toString();
   },
-  this.mean = function(a){
-    if(times[ce].length - a > 0){
-      slicedepth = times[ce].length - a;
+  this.mean = function(amt){
+    if(times[ce].length - amt > 0){
+      slicedepth = times[ce].length - amt;
     }
     dup = times[ce].slice(slicedepth);
     var m = at(satta(dup));
