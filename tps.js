@@ -56,45 +56,30 @@ var at = function(time_array) {
 
 var ins,
 timer_obj,
-times = [[], [], [], [], [], [], [], [], [], [], [], [], [], [], [], []],
-event = ['222', '333', '333oh', '333bf', '333ft', '444', '444bf', '555', '555bf', '666', '777', 'minx', 'pyram', 'sq1', 'clock', 'skewb'],
+times,
+event = [],
 ce = '333',
 dup,
 slicedepth = 0;
 
-(function( $ ) {
-	var getScript = $.getScript;
-	$.getScript = function( resources, callback ) {
-		var length = resources.length, 
-		handler = function() { counter++; },
-		deferreds = [],
-		counter = 0, 
-		idx = 0;
-		for ( ; idx < length; idx++ ) {
-			deferreds.push(
-				getScript( resources[ idx ], handler )
-			);
-		}
-		jQuery.when.apply( null, deferreds ).then(function() {
-			callback && callback();
-		});
-	};
-})( jQuery );
-$.getScript(['https://rawgit.com/cubing/jsss/master/scramble_222.js', 'https://rawgit.com/cubing/jsss/master/scramble_333.js', 'https://rawgit.com/cubing/jsss/master/scramble_NNN.js', 'https://rawgit.com/cubing/jsss/master/scramble_minx.js', 'https://rawgit.com/cubing/jsss/master/scramble_pyram.js', 'https://rawgit.com/cubing/jsss/master/scramble_sq1.js', 'https://rawgit.com/cubing/jsss/master/scramble_clock.js', 'https://molarmanful.github.io/minimalistimer/skewb.js'], function(){
-  console.log('Mark 2 loaded.');
-});
-window.tps = function(s, t){
-  $.each(event, function(i, v){
-    scramblers[v].initialize(null, Math);
-  });
+window.tps = function(s, t, e){
+  if(e.length > 0){
+    event = e;
+    $.each(e, function(i, v){
+      scramblers[v].initialize(null, Math);
+      times.push([]);
+    });
+  }
   timer_obj = new startTimer($(t));
   me = this;
   this.scramble = function(){
-    $(s).html(scramblers[ce].getRandomScramble().scramble_string);
+    if(event.indexOf(ce) > -1){
+    	$(s).html(scramblers[ce].getRandomScramble().scramble_string);
+    }
   },
   this.event = function(e){
     ce = e;
-    $(s).html(scramblers[ce].getRandomScramble().scramble_string);
+    me.scramble();
   }
   this.inspect = function(t){
     $(ti).text(t);
