@@ -86,10 +86,10 @@ window.tps = function(s, t, e){
     me.scramble();
   }
   this.inspect = function(t){
-    $(ti).text(t);
+    $(t).text(t);
     var x = t - 1;
     ins = setInterval(function(){
-      $(ti).text(x);
+      $(t).text(x);
       if(x == 0){
         clearInterval(ins);
         timer_obj.start();
@@ -99,7 +99,7 @@ window.tps = function(s, t, e){
     }, 1000);
   },
   this.record = function(){
-    times[event.indexOf(ce)].push($(ti).text());
+    times[event.indexOf(ce)].push($(t).text());
   },
   this.start = function(){
     timer_obj.start();
