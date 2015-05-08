@@ -12,11 +12,12 @@
       </div>
     </div>
     
+    <script src="https://rawgit.com/cubing/jsss/master/scramble_333.js"></script>
     <script src="tps.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
     <script>
       $(document).ready(function(){
-        var t = new tps('.scramble', 'h1');
+        var t = new tps('.scramble', 'h1', ['333']);
         t.scramble();
         var stop = false;
         $(document).keyup(function(e){
