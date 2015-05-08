@@ -122,14 +122,14 @@ window.tps = function(s, t, e){
   };
   this.best = function(){
     if(times[index].length > 0){
-      return sort[0];
+      return sort()[0];
     } else {
       return 'DNF';
     }
   }
   this.worst = function(){
     if(times[index].length > 0){
-      return sort[sort.length - 1];
+      return sort()[sort().length - 1];
     } else {
       return 'DNF';
     }
@@ -140,7 +140,7 @@ window.tps = function(s, t, e){
         slicedepth = times[index].length - amt;
       }
       dup = times[index].slice(slicedepth);
-      dup.splice(dup.indexOf(sort[times[index].length - 1]), 1).splice(dup.indexOf(sort[0]), 1);
+      dup.splice(dup.indexOf(sort()[times[index].length - 1]), 1).splice(dup.indexOf(sort()[0]), 1);
       var m = at(satta(dup));
       return m.minutes.toString() + ':' + m.seconds.toString() + '.' + m.milliseconds.toString();
     } else {
