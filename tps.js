@@ -131,7 +131,7 @@ window.tps = function(s, t, e){
     }
   }
   this.avg = function(amt){
-    if(times[index].length > 2){
+    if(times[index].length > 2 && times[index].length >= amt - 2){
       if(times[index].length - amt > 0){
         slicedepth = times[event.indexOf(ce)].length - amt;
       }
@@ -144,7 +144,7 @@ window.tps = function(s, t, e){
     }
   };
   this.mean = function(amt){
-    if(times[index].length > 0){
+    if(times[index].length >= amt){
       if(times[index].length - amt > 0){
         slicedepth = times[ce].length - amt;
       }
