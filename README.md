@@ -5,6 +5,15 @@ Javascript Rubik's Cube timer framework. Source includes jQuery, jQuery Cookie, 
 The code is hosted at http://molarmanful.github.io/tps/tps.js. Include that script in your head tag.
 
 ## Usage
-1. Call the TPS function: `var timer = new tps('jquery-selector', 'another-jquery-selector', ['event']);`.
-2. Call any of the methods listed below.
-
+```js
+var timer = new tps('.scramble', '.timer-display', ['333']); //initialize
+timer.scramble(); //scramble
+timer.event('333oh'); //change event
+timer.inspect(15); //inspect (number value)
+timer.start(); //start timer
+timer.stop(); //stop timer
+timer.avg(5); //find last average of n
+timer.mean(3); //find last mean of n
+timer.store(); //store times in local storage (or cookies if no local storage)
+timer.recall(); //get times from local storage or (cookies if no local storage)
+```
