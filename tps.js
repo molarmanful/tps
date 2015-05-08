@@ -116,22 +116,42 @@ window.tps = function(s, t, e){
   this.times = function(){
     return times[index];
   };
-  this.avg = function(amt){
-    if(times[index].length - amt > 0){
-      slicedepth = times[event.indexOf(ce)].length - amt;
+  this.best = function(){
+    if(times[index].length > 0){
+      return Math.min.apply(Math, times[index]);
+    } else {
+      return 'DNF';
     }
-    dup = times[index].slice(slicedepth);
-    dup.splice(dup.indexOf(Math.max.apply(Math, dup)), 1).splice(dup.indexOf(Math.min.apply(Math, dup)), 1);
-    var m = at(satta(dup));
-    return m.minutes.toString() + ':' + m.seconds.toString() + '.' + m.milliseconds.toString();
+  }
+  this.worst = function(){
+    if(times[index].length > 0){
+      return Math.max.apply(Math, times[index]);
+    } else {
+      return 'DNF';
+    }
+  }
+  this.avg = function(amt){
+    if(times[index].length > 2){
+      if(times[index].length - amt > 0){
+        slicedepth = times[event.indexOf(ce)].length - amt;
+      }
+      dup = times[index].slice(slicedepth);
+      dup.splice(dup.indexOf(Math.max.apply(Math, dup)), 1).splice(dup.indexOf(Math.min.apply(Math, dup)), 1);
+      var m = at(satta(dup));
+      return m.minutes.toString() + ':' + m.seconds.toString() + '.' + m.milliseconds.toString();
+    } else {
+      return 'DNF';
+    }
   };
   this.mean = function(amt){
-    if(times[index].length - amt > 0){
-      slicedepth = times[ce].length - amt;
+    if(times[index].length > 0){
+      if(times[index].length - amt > 0){
+        slicedepth = times[ce].length - amt;
+      }
+      dup = times[index].slice(slicedepth);
+      var m = at(satta(dup));
+      return m.minutes.toString() + ':' + m.seconds.toString() + '.' + m.milliseconds.toString();
     }
-    dup = times[index].slice(slicedepth);
-    var m = at(satta(dup));
-    return m.minutes.toString() + ':' + m.seconds.toString() + '.' + m.milliseconds.toString();
   },
   this.store = function(){
     if(typeof(Storage) != 'undefined'){
