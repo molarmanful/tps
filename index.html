@@ -44,11 +44,11 @@
             $('.timelist').html(t.times().join(', '));
             $('.b').html(t.best());
             $('.w').html(t.worst());
-            $('.sa').html(t.average(0));
+            $('.sa').html(t.avg(0));
             $('.sm').html(t.mean(0));
-            $('.ao5').html(t.average(5));
-            $('.ao12').html(t.average(12));
-            $('.ao100').html(t.average(100));
+            $('.ao5').html(t.avg(5));
+            $('.ao12').html(t.avg(12));
+            $('.ao100').html(t.avg(100));
           }
         }).keydown(function(e){
           if(e.keyCode == 32 && stop == true){
