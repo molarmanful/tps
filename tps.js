@@ -79,9 +79,7 @@ window.tps = function(s, t, e){
   timer_obj = new startTimer($(t));
   me = this;
   this.scramble = function(){
-    if(event.indexOf(ce) > -1){
-    	$(s).html(scramblers[ce].getRandomScramble().scramble_string);
-    }
+    $(s).html(scramblers[ce].getRandomScramble().scramble_string);
   },
   this.event = function(e){
     ce = e;
