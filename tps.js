@@ -62,7 +62,7 @@ var at = function(time_array) {
 
 var ins,
 timer_obj,
-times = [[]],
+times = [],
 event = ['333'],
 ce = '333',
 index = event.indexOf(ce),
@@ -70,7 +70,7 @@ dup,
 slicedepth = 0;
 
 window.tps = function(s, t, e){
-  if(typeof e == 'array' && e.length > 0 && typeof scramblers != 'undefined'){
+  if(typeof e == 'array' && e.length > 0){
     event = e;
     $.each(e, function(i, v){
       scramblers[v].initialize(null, Math);
@@ -78,6 +78,7 @@ window.tps = function(s, t, e){
     });
   } else {
     scramblers['333'].initialize(null, Math);
+    times.push([]);
   }
   timer_obj = new startTimer($(t));
   me = this;
