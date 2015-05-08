@@ -140,7 +140,7 @@ window.tps = function(s, t, e){
         slicedepth = times[event.indexOf(ce)].length - amt;
       }
       dup = times[index].slice(slicedepth);
-      dup.splice(dup.indexOf(sort[times[sn].length - 1]), 1).splice(dup.indexOf(sort[0]), 1);
+      dup.splice(dup.indexOf(sort[times[index].length - 1]), 1).splice(dup.indexOf(sort[0]), 1);
       var m = at(satta(dup));
       return m.minutes.toString() + ':' + m.seconds.toString() + '.' + m.milliseconds.toString();
     } else {
