@@ -20,10 +20,13 @@
       $(document).ready(function(){
         //initialize
         var t = new tps('.scramble', 'h1');
+        
         //generate starting scramble
+        t.scramble();
+        
+        //get stored times if any
         t.recall();
         $('.timelist').html(t.times().join(', '));
-        t.scramble();
         
         //timing code
         var stop = false;
@@ -41,6 +44,8 @@
           }
         });
       });
+      
+      //store times
       window.onbeforeunload = function(){
         t.store();
       };
