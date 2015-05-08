@@ -66,7 +66,7 @@ times = [],
 event = ['333'],
 ce = '333',
 index = event.indexOf(ce),
-sort = times[ce].slice(0).sort(),
+sort = times[index].slice(0).sort(),
 dup,
 slicedepth = 0;
 
