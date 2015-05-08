@@ -12,7 +12,7 @@ timer.event('333oh'); //change event - must be defined in initialization functio
 timer.inspect(15); //inspect (number value)
 timer.start(); //start timer
 timer.stop(); //stop timer
-timer.times(); //get array of times
+timer.times(); //get array of times for current event
 timer.avg(5); //find last average of n
 timer.mean(3); //find last mean of n
 timer.store(); //store times in local storage (or cookies if no local storage)
