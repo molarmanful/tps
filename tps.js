@@ -135,7 +135,7 @@ window.tps = function(s, t, e){
     }
   }
   this.avg = function(amt){
-    if(times[index].length > 2 && times[index].length >= amt){
+    if(amt > 2 && times[index].length >= amt){
       if(times[index].length - amt > 0){
         slicedepth = times[index].length - amt;
       }
