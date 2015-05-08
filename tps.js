@@ -63,7 +63,7 @@ timer_obj,
 times = [[]],
 event = ['333'],
 ce = '333',
-index = event.indexOf(ce);
+index = event.indexOf(ce),
 dup,
 slicedepth = 0;
 
