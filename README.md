@@ -8,7 +8,7 @@ The code is hosted at http://molarmanful.github.io/tps/tps.js. Include that scri
 ```js
 var timer = new tps('.scramble', '.timer-display', ['333']); //initialize
 timer.scramble(); //scramble
-timer.event('333oh'); //change event
+timer.event('333oh'); //change event - must be defined in initialization function
 timer.inspect(15); //inspect (number value)
 timer.start(); //start timer
 timer.stop(); //stop timer
