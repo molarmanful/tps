@@ -58,7 +58,7 @@ var at = function(time_array) {
 
 var ins,
 timer_obj,
-times,
+times = [[]],
 event = ['333'],
 ce = '333',
 dup,
