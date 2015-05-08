@@ -84,11 +84,11 @@ window.tps = function(s, t, e){
   me = this;
   this.scramble = function(){
     $(s).html(scramblers[ce].getRandomScramble().scramble_string);
-  },
+  };
   this.event = function(e){
     ce = e;
     me.scramble();
-  }
+  };
   this.inspect = function(t){
     $(t).text(t);
     var x = t - 1;
@@ -101,18 +101,21 @@ window.tps = function(s, t, e){
         x--;
       }
     }, 1000);
-  },
+  };
   this.record = function(){
     times[index].push($(t).text());
-  },
+  };
   this.start = function(){
     timer_obj.start();
-  },
+  };
   this.stop = function(){
     timer_obj.end();
     me.scramble();
     me.record();
-  },
+  };
+  this.times = function(){
+    return times[index];
+  };
   this.avg = function(amt){
     if(times[index].length - amt > 0){
       slicedepth = times[event.indexOf(ce)].length - amt;
@@ -121,7 +124,7 @@ window.tps = function(s, t, e){
     dup.splice(dup.indexOf(Math.max.apply(Math, dup)), 1).splice(dup.indexOf(Math.min.apply(Math, dup)), 1);
     var m = at(satta(dup));
     return m.minutes.toString() + ':' + m.seconds.toString() + '.' + m.milliseconds.toString();
-  },
+  };
   this.mean = function(amt){
     if(times[index].length - amt > 0){
       slicedepth = times[ce].length - amt;
@@ -136,7 +139,7 @@ window.tps = function(s, t, e){
     } else {
       $.cookie('times', JSON.stringify(times));
     }
-  },
+  };
   this.recall = function(){
     if(typeof(Storage) != 'undefined') {
       if(localStorage.getItem('times') != null){
@@ -148,5 +151,5 @@ window.tps = function(s, t, e){
         times = $.cookie('times');
       }
     }
-  }
+  };
 };
