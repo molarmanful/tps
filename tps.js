@@ -63,7 +63,7 @@ dup,
 slicedepth = 0;
 
 window.tps = function(s, t, e){
-  if(e.length > 0){
+  if(typeof e == 'array' && e.length > 0){
     event = e;
     $.each(e, function(i, v){
       scramblers[v].initialize(null, Math);
