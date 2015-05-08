@@ -10,6 +10,7 @@
         <h1>0:0.000</h1>
         <p class="scramble"></p>
       </div>
+      <p>Times: <span class="timelist">None submitted.</span></p>
     </div>
     
     <!-- TPS comes with jQuery, so put it before any other jQuery-dependent files-->
@@ -20,6 +21,8 @@
         //initialize
         var t = new tps('.scramble', 'h1');
         //generate starting scramble
+        t.recall();
+        $('.timelist').html(t.times().join(', '));
         t.scramble();
         
         //timing code
@@ -30,6 +33,7 @@
             stop = true;
           } else {
             stop = false;
+            $('.timelist').html(t.times().join(', '));
           }
         }).keydown(function(e){
           if(e.keyCode == 32 && stop == true){
@@ -37,6 +41,9 @@
           }
         });
       });
+      window.onbeforeunload = function(){
+        t.store();
+      };
     </script>
   </body>
 </html>
