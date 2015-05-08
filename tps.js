@@ -66,7 +66,7 @@ times = [],
 event = ['333'],
 ce = '333',
 index = event.indexOf(ce),
-sort = times[index].slice(0).sort(),
+sort,
 dup,
 slicedepth = 0;
 
@@ -80,6 +80,7 @@ window.tps = function(s, t, e){
   } else {
     scramblers['333'].initialize(null, Math);
     times.push([]);
+    sort = times[index].slice(0).sort();
   }
   timer_obj = new startTimer($(t));
   me = this;
