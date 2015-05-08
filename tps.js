@@ -63,6 +63,7 @@ timer_obj,
 times = [[]],
 event = ['333'],
 ce = '333',
+index = event.indexOf(ce);
 dup,
 slicedepth = 0;
 
@@ -99,7 +100,7 @@ window.tps = function(s, t, e){
     }, 1000);
   },
   this.record = function(){
-    times[event.indexOf(ce)].push($(t).text());
+    times[index].push($(t).text());
   },
   this.start = function(){
     timer_obj.start();
@@ -110,19 +111,19 @@ window.tps = function(s, t, e){
     me.record();
   },
   this.avg = function(amt){
-    if(times[event.indexOf(ce)].length - amt > 0){
+    if(times[index].length - amt > 0){
       slicedepth = times[event.indexOf(ce)].length - amt;
     }
-    dup = times[event.indexOf(ce)].slice(slicedepth);
+    dup = times[index].slice(slicedepth);
     dup.splice(dup.indexOf(Math.max.apply(Math, dup)), 1).splice(dup.indexOf(Math.min.apply(Math, dup)), 1);
     var m = at(satta(dup));
     return m.minutes.toString() + ':' + m.seconds.toString() + '.' + m.milliseconds.toString();
   },
   this.mean = function(amt){
-    if(times[event.indexOf(ce)].length - amt > 0){
+    if(times[index].length - amt > 0){
       slicedepth = times[ce].length - amt;
     }
-    dup = times[event.indexOf(ce)].slice(slicedepth);
+    dup = times[index].slice(slicedepth);
     var m = at(satta(dup));
     return m.minutes.toString() + ':' + m.seconds.toString() + '.' + m.milliseconds.toString();
   },
