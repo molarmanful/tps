@@ -8,9 +8,18 @@
     <div class="container">
       <div class="jumbotron text-center">
         <h1>0:0.000</h1>
+        <hr>
         <p class="scramble"></p>
       </div>
       <p>Times: <span class="timelist">None submitted.</span></p>
+      <p>Session Best: <span class="b"></span></p>
+      <p>Session Worst: <span class="w"></span></p>
+      <p>Session Average: <span class="sa"></span></p>
+      <p>Session Mean: <span class="sm"></span></p>
+      <hr>
+      <p>Current Average of 5: <span class="ao5"></span></p>
+      <p>Current Average of 12: <span class="ao12"></span></p>
+      <p>Current Average of 100: <span class="ao100"></span></p>
     </div>
     
     <!-- TPS comes with jQuery, so put it before any other jQuery-dependent files-->
@@ -24,10 +33,6 @@
         //generate starting scramble
         t.scramble();
         
-        //get stored times if any
-        t.recall();
-        $('.timelist').html(t.times().join(', '));
-        
         //timing code
         var stop = false;
         $(document).keyup(function(e){
@@ -37,6 +42,13 @@
           } else {
             stop = false;
             $('.timelist').html(t.times().join(', '));
+            $('.b').html(t.best());
+            $('.w').html(t.worst());
+            $('.sa').html(t.average(0));
+            $('.sm').html(t.mean(0));
+            $('.ao5').html(t.average(5));
+            $('.ao12').html(t.average(12));
+            $('.ao100').html(t.average(100));
           }
         }).keydown(function(e){
           if(e.keyCode == 32 && stop == true){
@@ -44,11 +56,6 @@
           }
         });
       });
-      
-      //store times
-      window.onbeforeunload = function(){
-        t.store();
-      };
     </script>
   </body>
 </html>
