@@ -137,7 +137,7 @@ window.tps = function(s, t, e){
   this.avg = function(amt){
     if(times[index].length > 2 && times[index].length >= amt - 2){
       if(times[index].length - amt > 0){
-        slicedepth = times[event.indexOf(ce)].length - amt;
+        slicedepth = times[index].length - amt;
       }
       dup = times[index].slice(slicedepth);
       dup.splice(dup.indexOf(sort[times[index].length - 1]), 1).splice(dup.indexOf(sort[0]), 1);
@@ -150,7 +150,7 @@ window.tps = function(s, t, e){
   this.mean = function(amt){
     if(times[index].length >= amt){
       if(times[index].length - amt > 0){
-        slicedepth = times[ce].length - amt;
+        slicedepth = times[index].length - amt;
       }
       dup = times[index].slice(slicedepth);
       var m = at(satta(dup));
