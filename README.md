@@ -1,5 +1,5 @@
 # Timer Program Starter
-Javascript Rubik's Cube timer framework. Source includes jQuery, jQuery Cookie.
+Javascript Rubik's Cube timer framework. Source includes jQuery, jQuery Cookie, Mark 2 (+Skewb), and jChester.
 
 ## Download
 The code is hosted at http://molarmanful.github.io/tps/tps.js. Include that script in your head tag.
