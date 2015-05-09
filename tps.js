@@ -107,7 +107,7 @@ window.tps = function(s, t, e){
     }, 1000);
   };
   this.record = function(){
-    times[index].push($(t).text());
+    
   };
   this.start = function(){
     timer_obj.start();
@@ -115,7 +115,7 @@ window.tps = function(s, t, e){
   this.stop = function(){
     timer_obj.end();
     me.scramble();
-    me.record();
+    times[index].push($(t).text());
   };
   this.times = function(){
     return times[index];
@@ -137,7 +137,7 @@ window.tps = function(s, t, e){
   this.avg = function(amt){
     if(amt > 2 && times[index].length >= amt){
       if(times[index].length > 0 && times[index].length - amt >= 0){
-        slicedepth = times[index].length - amt - 3;
+        slicedepth = times[index].length - amt - 2;
       }
       dup = times[index].slice(slicedepth);
       dup.splice(dup.indexOf(sort()[times[index].length - 1]), 1).splice(dup.indexOf(sort()[0]), 1);
@@ -150,7 +150,7 @@ window.tps = function(s, t, e){
   this.mean = function(amt){
     if(times[index].length >= amt){
       if(times[index].length - amt >= 0){
-        slicedepth = times[index].length - amt - 1;
+        slicedepth = times[index].length - amt;
       }
       dup = times[index].slice(slicedepth);
       var m = at(satta(dup));
