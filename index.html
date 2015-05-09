@@ -46,8 +46,8 @@
             $('.timelist').html(t.times().join(', '));
             $('.b').html(t.best());
             $('.w').html(t.worst());
-            $('.sa').html(t.avg(t.times().length - 1));
-            $('.sm').html(t.mean(t.times().length - 1));
+            $('.sa').html(t.avg(t.times().length));
+            $('.sm').html(t.mean(t.times().length));
             $('.ao5').html(t.avg(5));
             $('.ao12').html(t.avg(12));
             $('.ao100').html(t.avg(100));
