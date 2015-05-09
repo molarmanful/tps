@@ -105,7 +105,7 @@ window.tps = function(s, t, e){
   this.avg = function(amt){
     if(amt > 2 && times[index].length >= amt){
       if(times[index].length > 0 && times[index].length - amt >= 0){
-        slicedepth = times[index].length - 1 - amt;
+        slicedepth = times[index].length - amt;
       }
       dup = times[index].slice(slicedepth);
       dup.splice(dup.indexOf(sort()[times[index].length - 1]), 1).splice(dup.indexOf(sort()[0]), 1);
@@ -117,7 +117,7 @@ window.tps = function(s, t, e){
   this.mean = function(amt){
     if(times[index].length >= amt){
       if(times[index].length - amt >= 0){
-        slicedepth = times[index].length - 1 - amt;
+        slicedepth = times[index].length - amt;
       }
       dup = times[index].slice(slicedepth);
       return jChester.solveTimeToStopwatchFormat({millis: st(dup).average(), decimals: 3});
