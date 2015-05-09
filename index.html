@@ -37,21 +37,24 @@
         var stop = false;
         $(document).keyup(function(e){
           if(e.keyCode == 32 && stop == false){
+            //start timer
             t.start();
             stop = true;
           } else {
             stop = false;
+            //update stats
             $('.timelist').html(t.times().join(', '));
             $('.b').html(t.best());
             $('.w').html(t.worst());
-            $('.sa').html(t.avg(0));
-            $('.sm').html(t.mean(0));
+            $('.sa').html(t.avg(t.times().length - 1));
+            $('.sm').html(t.mean(t.times().length - 1));
             $('.ao5').html(t.avg(5));
             $('.ao12').html(t.avg(12));
             $('.ao100').html(t.avg(100));
           }
         }).keydown(function(e){
           if(e.keyCode == 32 && stop == true){
+            //stop timer
             t.stop();
           }
         });
