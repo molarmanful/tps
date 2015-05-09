@@ -108,7 +108,7 @@ window.tps = function(s, t, e){
         slicedepth = times[index].length - amt;
       }
       dup = times[index].slice(slicedepth);
-      dup.splice(dup.indexOf(sort()[times[index].length - 1]), 1).splice(dup.indexOf(sort()[0]), 1);
+      dup.splice(dup.indexOf(sort()[sort.length - 1]), 1).splice(dup.indexOf(sort()[0]), 1);
       return jChester.solveTimeToStopwatchFormat({millis: st(dup).average(), decimals: 3});
     } else {
       return 'DNF';
