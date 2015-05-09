@@ -136,7 +136,7 @@ window.tps = function(s, t, e){
   }
   this.avg = function(amt){
     if(amt > 2 && times[index].length >= amt){
-      if(times[index].length - amt > 0){
+      if(times[index].length - amt >= 0){
         slicedepth = times[index].length - amt;
       }
       dup = times[index].slice(slicedepth);
@@ -149,7 +149,7 @@ window.tps = function(s, t, e){
   };
   this.mean = function(amt){
     if(times[index].length >= amt){
-      if(times[index].length - amt > 0){
+      if(times[index].length - amt >= 0){
         slicedepth = times[index].length - amt;
       }
       dup = times[index].slice(slicedepth);
