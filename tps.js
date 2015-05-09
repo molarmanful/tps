@@ -71,7 +71,7 @@ window.tps = function(s, t, e){
       $(t).text(x);
       if(x == 0){
         clearInterval(ins);
-        timer_obj.start();
+        me.start();
       } else {
         x--;
       }
@@ -81,6 +81,7 @@ window.tps = function(s, t, e){
     
   };
   this.start = function(){
+    clearInterval(ins);
     timer_obj.start();
   };
   this.stop = function(){
