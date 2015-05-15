@@ -66,7 +66,7 @@ window.tps = function(s, t, e){
   };
   this.inspect = function(ti){
     $(t).text(ti);
-    var x = t - 1;
+    var x = ti - 1;
     ins = setInterval(function(){
       $(t).text(x);
       if(x == 0){
