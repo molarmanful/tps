@@ -64,8 +64,8 @@ window.tps = function(s, t, e){
     ce = e;
     me.scramble();
   };
-  this.inspect = function(t){
-    $(t).text(t);
+  this.inspect = function(ti){
+    $(t).text(ti);
     var x = t - 1;
     ins = setInterval(function(){
       $(t).text(x);
