@@ -8,6 +8,7 @@
     <div class="container">
       <div class="jumbotron text-center">
         <h1>0:0.000</h1>
+        <button class="btn btn-primary inspect">15-Second Inspection</button>
         <hr>
         <p class="scramble"></p>
       </div>
@@ -35,6 +36,11 @@
         
         //timing code
         var stop = false;
+        //inspect
+        $('.inspect').click(function(){
+          t.inspect(15);
+        });
+        //start/stop
         $(document).keyup(function(e){
           if(e.keyCode == 32 && stop == false){
             //start timer
