@@ -33,6 +33,7 @@ dup,
 slicedepth = 0;
 
 window.tps = function(s, t, e){
+  $.getScript('https://molarmanful.github.io/tps/scramblers.js');
   if(typeof e == 'array' && e.length > 0){
     event = e;
     $.each(e, function(i, v){
