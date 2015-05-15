@@ -33,6 +33,9 @@ dup,
 slicedepth = 0;
 
 window.tps = function(s, t, e){
+  var scramb = function(){
+    return scramblers[ce].getRandomScramble().scramble_string;
+  }
   $.getScript('https://molarmanful.github.io/tps/scramblers.js', function(){
     if(typeof e == 'array' && e.length > 0){
       event = e;
@@ -51,7 +54,7 @@ window.tps = function(s, t, e){
   timer_obj = new startTimer($(t));
   me = this;
   this.scramble = function(){
-    $(s).html(scramblers[ce].getRandomScramble().scramble_string);
+    $(s).html(scramb());
   };
   this.event = function(e){
     ce = e;
@@ -69,9 +72,6 @@ window.tps = function(s, t, e){
         x--;
       }
     }, 1000);
-  };
-  this.record = function(){
-    
   };
   this.start = function(){
     clearInterval(ins);
