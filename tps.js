@@ -31,7 +31,6 @@ index = event.indexOf(ce),
 sort,
 dup,
 slicedepth = 0;
-$.getScript('https://molarmanful.github.io/tps/scramblers.js');
 
 window.tps = function(s, t, e){
   if(typeof e == 'array' && e.length > 0){
