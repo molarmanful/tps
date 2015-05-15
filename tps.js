@@ -33,113 +33,109 @@ dup,
 slicedepth = 0;
 
 window.tps = function(s, t, e){
-  var scramb;
+  if(typeof e == 'array' && e.length > 0){
+    event = e;
+    $.each(e, function(i, v){
+      scramblers[v].initialize(null, Math);
+      times.push([]);
+    });
+  } else {
+    scramblers['333'].initialize(null, Math);
+    times.push([]);
+    sort = function(){
+      return times[index].slice(0).sort();
+    };
+  }
   timer_obj = new startTimer($(t));
   me = this;
-  $.getScript('https://molarmanful.github.io/tps/scramblers.js', function(){
-    if(typeof e == 'array' && e.length > 0){
-      event = e;
-      $.each(e, function(i, v){
-        scramblers[v].initialize(null, Math);
-        times.push([]);
-      });
-    } else {
-      scramblers['333'].initialize(null, Math);
-      times.push([]);
-      sort = function(){
-        return times[index].slice(0).sort();
-      };
-    }
-    scramb = function(){
-      return scramblers[ce].getRandomScramble().scramble_string;
-    };
+  this.scramble = function(){
+    $(s).html(scramblers[ce].getRandomScramble().scramble_string);
+  };
+  this.event = function(e){
+    ce = e;
+    me.scramble();
+  };
+  this.inspect = function(ti){
+    $(t).text(ti);
+    var x = ti - 1;
+    ins = setInterval(function(){
+      $(t).text(x);
+      if(x == 0){
+        clearInterval(ins);
+        me.start();
+      } else {
+        x--;
+      }
+    }, 1000);
+  };
+  this.record = function(){
     
-    me.scramble = function(){
-      $(s).html(scramb());
-    };
-    me.event = function(e){
-      ce = e;
-      me.scramble();
-    };
-    me.inspect = function(ti){
-      $(t).text(ti);
-      var x = ti - 1;
-      ins = setInterval(function(){
-        $(t).text(x);
-        if(x == 0){
-          clearInterval(ins);
-          me.start();
-        } else {
-          x--;
-        }
-      }, 1000);
-    };
-    me.start = function(){
-      clearInterval(ins);
-      timer_obj.start();
-    };
-    me.stop = function(){
-      timer_obj.end();
-      me.scramble();
-      times[index].push(jChester.solveTimeToStopwatchFormat(jChester.stopwatchFormatToSolveTime($(t).text())));
-    };
-    me.times = function(){
-      return times[index];
-    };
-    me.best = function(){
-      if(times[index].length > 0){
-        return sort()[0];
-      } else {
-        return 'DNF';
+  };
+  this.start = function(){
+    clearInterval(ins);
+    timer_obj.start();
+  };
+  this.stop = function(){
+    timer_obj.end();
+    me.scramble();
+    times[index].push(jChester.solveTimeToStopwatchFormat(jChester.stopwatchFormatToSolveTime($(t).text())));
+  };
+  this.times = function(){
+    return times[index];
+  };
+  this.best = function(){
+    if(times[index].length > 0){
+      return sort()[0];
+    } else {
+      return 'DNF';
+    }
+  }
+  this.worst = function(){
+    if(times[index].length > 0){
+      return sort()[sort().length - 1];
+    } else {
+      return 'DNF';
+    }
+  }
+  this.avg = function(amt){
+    if(amt > 2 && times[index].length >= amt){
+      if(times[index].length > 0 && times[index].length - amt >= 0){
+        slicedepth = times[index].length - amt;
+      }
+      dup = times[index].slice(slicedepth);
+      dup.splice(dup.indexOf(sort()[sort().length - 1]), 1);
+      dup.splice(dup.indexOf(sort()[0]), 1);
+      return jChester.solveTimeToStopwatchFormat({millis: st(dup).average(), decimals: 3});
+    } else {
+      return 'DNF';
+    }
+  };
+  this.mean = function(amt){
+    if(times[index].length >= amt){
+      if(times[index].length - amt >= 0){
+        slicedepth = times[index].length - amt;
+      }
+      dup = times[index].slice(slicedepth);
+      return jChester.solveTimeToStopwatchFormat({millis: st(dup).average(), decimals: 3});
+    }
+  },
+  this.store = function(){
+    if(typeof(Storage) != 'undefined'){
+      localStorage['times'] = JSON.stringify(times);
+    } else {
+      $.cookie('times', JSON.stringify(times));
+    }
+  };
+  this.recall = function(){
+    if(typeof(Storage) != 'undefined') {
+      if(localStorage.getItem('times') != null){
+        times = JSON.parse(localStorage['times']);
+      }
+    } else {
+      $.cookie.json = true;
+      if($.cookie('times') != 'undefined'){
+        times = $.cookie('times');
       }
     }
-    me.worst = function(){
-      if(times[index].length > 0){
-        return sort()[sort().length - 1];
-      } else {
-        return 'DNF';
-      }
-    }
-    me.avg = function(amt){
-      if(amt > 2 && times[index].length >= amt){
-        if(times[index].length > 0 && times[index].length - amt >= 0){
-          slicedepth = times[index].length - amt;
-        }
-        dup = times[index].slice(slicedepth);
-        dup.splice(dup.indexOf(sort()[sort().length - 1]), 1);
-        dup.splice(dup.indexOf(sort()[0]), 1);
-        return jChester.solveTimeToStopwatchFormat({millis: st(dup).average(), decimals: 3});
-      } else {
-        return 'DNF';
-      }
-    };
-    me.mean = function(amt){
-      if(times[index].length >= amt){
-        if(times[index].length - amt >= 0){
-          slicedepth = times[index].length - amt;
-        }
-        dup = times[index].slice(slicedepth);
-        return jChester.solveTimeToStopwatchFormat({millis: st(dup).average(), decimals: 3});
-      }
-    };
-    me.store = function(){
-      if(typeof(Storage) != 'undefined'){
-        localStorage['times'] = JSON.stringify(times);
-      } else {
-        $.cookie('times', JSON.stringify(times));
-      }
-    };
-    me.recall = function(){
-      if(typeof(Storage) != 'undefined') {
-        if(localStorage.getItem('times') != null){
-          times = JSON.parse(localStorage['times']);
-        }
-      } else {
-        $.cookie.json = true;
-        if($.cookie('times') != 'undefined'){
-          times = $.cookie('times');
-        }
-      }
-    };
-  });
+  };
 };
