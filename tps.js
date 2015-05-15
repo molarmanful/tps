@@ -33,20 +33,21 @@ dup,
 slicedepth = 0;
 
 window.tps = function(s, t, e){
-  if(typeof e == 'array' && e.length > 0){
-    $.getScript('https://molarmanful.github.io/tps/scramblers.js');
-    event = e;
-    $.each(e, function(i, v){
-      scramblers[v].initialize(null, Math);
+  $.getScript('https://molarmanful.github.io/tps/scramblers.js', function(){
+    if(typeof e == 'array' && e.length > 0){
+      event = e;
+      $.each(e, function(i, v){
+        scramblers[v].initialize(null, Math);
+        times.push([]);
+      });
+    } else {
+      scramblers['333'].initialize(null, Math);
       times.push([]);
-    });
-  } else {
-    scramblers['333'].initialize(null, Math);
-    times.push([]);
-    sort = function(){
-      return times[index].slice(0).sort();
-    };
-  }
+      sort = function(){
+        return times[index].slice(0).sort();
+      };
+    }
+  });
   timer_obj = new startTimer($(t));
   me = this;
   this.scramble = function(){
