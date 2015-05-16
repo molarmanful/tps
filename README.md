@@ -4,7 +4,9 @@ Javascript Rubik's Cube timer framework. Source includes jQuery, jQuery Cookie, 
 ## Download
 Include in head or body:
 ```html
+<!--only include tps-scramblers.js if you need other WCA events besides 3x3x3-->
 <script src="https://molarmanful.github.io/tps/tps-scramblers.js"></script>
+
 <script src="https://molarmanful.github.io/tps/tps.js"></script>
 ```
 
