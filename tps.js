@@ -70,9 +70,6 @@ window.tps = function(s, t, e){
       }
     }, 1000);
   };
-  this.record = function(){
-    
-  };
   this.start = function(){
     clearInterval(ins);
     timer_obj.start();
