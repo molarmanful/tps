@@ -30,6 +30,10 @@ timer.worst(); //get session worst time
 timer.avg(5); //find last average of n
 timer.mean(3); //find last mean of n
 
+//time deleting
+timer.delete(4); //delete time at specified index in time array
+timer.resetall(); //delete all times for the event
+
 //storage
 timer.store(); //store times in local storage (or cookies if no local storage)
 timer.recall(); //get times from local storage or (cookies if no local storage)
