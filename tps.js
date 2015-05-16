@@ -50,6 +50,8 @@ window.tps = function(s, t, e){
   }
   timer_obj = new startTimer($(t));
   me = this;
+  
+  //scrambling
   this.scramble = function(){
     $(s).html(scramblers[ce].getRandomScramble().scramble_string);
   };
@@ -57,6 +59,8 @@ window.tps = function(s, t, e){
     ce = e;
     me.scramble();
   };
+  
+  //timing
   this.inspect = function(ti){
     $(t).text(ti);
     var x = ti - 1;
@@ -79,6 +83,8 @@ window.tps = function(s, t, e){
     me.scramble();
     times[index].push(jChester.solveTimeToStopwatchFormat(jChester.stopwatchFormatToSolveTime($(t).text())));
   };
+  
+  //stats
   this.times = function(){
     return times[index];
   };
@@ -118,6 +124,16 @@ window.tps = function(s, t, e){
       return jChester.solveTimeToStopwatchFormat({millis: st(dup).average(), decimals: 3});
     }
   };
+  
+  //delete
+  this.delete = function(e){
+    times[index].splice(e, 1);
+  };
+  this.resetall = function(){
+    times[index] = [];
+  };
+  
+  //storage
   this.store = function(){
     if(typeof(Storage) != 'undefined'){
       localStorage['times'] = JSON.stringify(times);
