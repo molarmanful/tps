@@ -117,7 +117,7 @@ window.tps = function(s, t, e){
       dup = times[index].slice(slicedepth);
       return jChester.solveTimeToStopwatchFormat({millis: st(dup).average(), decimals: 3});
     }
-  },
+  };
   this.store = function(){
     if(typeof(Storage) != 'undefined'){
       localStorage['times'] = JSON.stringify(times);
