@@ -90,14 +90,14 @@ window.tps = function(s, t, e){
   };
   this.best = function(){
     if(times[index].length > 0){
-      return sort()[0];
+      return sort(function(c, d){return c - d})[0];
     } else {
       return 'DNF';
     }
   }
   this.worst = function(){
     if(times[index].length > 0){
-      return sort()[sort().length - 1];
+      return sort(function(c, d){return c - d})[sort().length - 1];
     } else {
       return 'DNF';
     }
