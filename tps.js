@@ -136,20 +136,20 @@ window.tps = function(s, t, e){
   //storage
   this.store = function(){
     if(typeof(Storage) != 'undefined'){
-      localStorage['times'] = JSON.stringify(times);
+      localStorage['tpstimes'] = JSON.stringify(times);
     } else {
-      $.cookie('times', JSON.stringify(times));
+      $.cookie('tpstimes', JSON.stringify(times));
     }
   };
   this.recall = function(){
     if(typeof(Storage) != 'undefined') {
-      if(localStorage.getItem('times') != null){
-        times = JSON.parse(localStorage['times']);
+      if(localStorage.getItem('tpstimes') != null){
+        times = JSON.parse(localStorage['tpstimes']);
       }
     } else {
       $.cookie.json = true;
-      if($.cookie('times') != 'undefined'){
-        times = $.cookie('times');
+      if($.cookie('tpstimes') != 'undefined'){
+        times = $.cookie('tpstimes');
       }
     }
   };
