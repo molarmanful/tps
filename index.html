@@ -35,6 +35,9 @@
         //get stored times, if any
         t.recall();
         
+        //display recalled times
+        $('.timelist').html(t.times().join(', '));
+        
         //generate starting scramble
         t.scramble();
         
