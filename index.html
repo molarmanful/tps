@@ -32,6 +32,9 @@
         //initialize
         var t = new tps('.scramble', 'h1');
         
+        //get stored times, if any
+        t.recall();
+        
         //generate starting scramble
         t.scramble();
         
@@ -66,6 +69,10 @@
           }
         });
       });
+      window.onbeforeunload = function(){
+        //store times
+        t.store();
+      }
     </script>
   </body>
 </html>
