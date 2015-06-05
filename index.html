@@ -78,11 +78,11 @@
             t.stop();
           }
         });
+        window.onbeforeunload = function(){
+          //store times
+          t.store();
+        }
       });
-      window.onbeforeunload = function(){
-        //store times
-        t.store();
-      }
     </script>
   </body>
 </html>
