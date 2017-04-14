@@ -68,6 +68,7 @@ window.tps = function(s, t, e){
       $(t).text(x);
       if(x == 0){
         clearInterval(ins);
+        ins = null;
         me.start();
       } else {
         x--;
