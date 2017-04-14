@@ -77,6 +77,7 @@ window.tps = function(s, t, e){
   };
   this.start = function(){
     clearInterval(ins);
+    ins = null;
     timer_obj.start();
   };
   this.stop = function(){
